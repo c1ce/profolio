@@ -1,0 +1,92 @@
+.login {
+  background-color: white;
+  width: 140px;
+  height: 63px;
+  position: absolute;
+  right: 49px;
+  top: 26px;
+  border-radius: 50px;
+  border: 2px solid rgba(57, 100, 255, 1);
+  color: rgba(57, 100, 255, 1);
+  font-family: "Nanum Gothic";
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 50px;
+}
+.login:active {
+  background-color: rgba(57, 100, 255, 1);
+  width: 140px;
+  height: 63px;
+  position: absolute;
+  right: 49px;
+  top: 26px;
+  border-radius: 50px;
+  border: 2px solid rgba(57, 100, 255, 1);
+  color: white;
+  font-family: "Nanum Gothic";
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 50px;
+}
+
+.m1 {
+  font-family: "Namnum Gothic";
+  color: black;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 50px;
+  top: 264px;
+  left: 125px;
+  position: absolute;
+}
+.m2 {
+  font-family: "Namnum Gothic";
+  color: black;
+  font-weight: 345;
+  font-size: 30px;
+  line-height: 40px;
+  top: 370px;
+  left: 125px;
+  position: absolute;
+}
+.start {
+  background-color: rgba(57, 100, 255, 1);
+  width: 202px;
+  height: 72px;
+  position: absolute;
+  left: 125px;
+  top: 496px;
+  border-radius: 50px;
+  border: 2px solid white;
+  color: white;
+  font-family: "Nanum Gothic";
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 50px;
+}
+.start:active {
+  background-color: white;
+  height: 72px;
+  position: absolute;
+  left: 125px;
+  top: 496px;
+  border-radius: 50px;
+  border: 2px solid rgba(57, 100, 255, 1);
+  color: rgba(57, 100, 255, 1);
+  font-family: "Nanum Gothic";
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 50px;
+}
+.m3 {
+  width: 923px;
+  height: 835px;
+  position: absolute;
+  left: 474px;
+  top: 189px;
+  background-size: cover;
+}

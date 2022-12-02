@@ -1,0 +1,182 @@
+.back {
+  overflow: hidden;
+  background-color: white;
+  width: 1440px;
+  height: 1028px;
+  position: absolute;
+}
+.u2 {
+  width: 36px;
+  height: 38px;
+  position: absolute;
+  left: 1349px;
+  top: 42px;
+  background-image: url("../images/close_button.png");
+  background-color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0;
+  border: none;
+}
+.search {
+  color: rgba(0, 0, 0, 0.6);
+  border: 1.5px solid rgba(90, 90, 90, 0.6);
+  left: 25px;
+  width: 250px;
+  height: 52px;
+  position: absolute;
+  top: 158px;
+  padding: 8px 21px 0 0;
+  font-family: "Roboto";
+  text-align: left;
+  text-indent: 10px;
+  font-size: 16px;
+  letter-spacing: 0.1px;
+}
+.mpd {
+  color: rgba(0, 0, 0, 1);
+  width: 212px;
+  height: 49px;
+  position: absolute;
+  left: 25px;
+  top: 305px;
+  font-family: "Nanum Gothic";
+  text-align: left;
+  font-size: 21px;
+  letter-spacing: 1;
+}
+.sp {
+  color: rgba(0, 0, 0, 1);
+  width: 191px;
+  height: 49px;
+  position: absolute;
+  left: 21px;
+  top: 405px;
+  font-family: "Nanum Gothic";
+  text-align: left;
+  font-size: 21px;
+  letter-spacing: 1;
+}
+.lp {
+  color: rgba(0, 0, 0, 1);
+  width: 191px;
+  height: 49px;
+  position: absolute;
+  left: 25px;
+  top: 505px;
+  font-family: "Nanum Gothic";
+  text-align: left;
+  font-size: 21px;
+  letter-spacing: 1;
+  line-height: px;
+}
+.mp {
+  color: rgba(0, 0, 0, 1);
+  width: 134px;
+  height: 49px;
+  position: absolute;
+  left: 27px;
+  top: 605px;
+  font-family: "Nanum Gothic";
+  text-align: left;
+  font-size: 21px;
+  letter-spacing: 1;
+  line-height: px;
+}
+.help {
+  color: rgba(0, 0, 0, 1);
+  width: 88px;
+  height: 32px;
+  position: absolute;
+  left: 30px;
+  top: 705px;
+  font-family: "Nanum Gothic";
+  text-align: left;
+  font-size: 21px;
+  letter-spacing: 1;
+  line-height: px;
+}
+.logout {
+  color: rgba(90, 90, 90, 0.6);
+  width: 96px;
+  height: 32px;
+  position: absolute;
+  left: 30px;
+  top: 805px;
+  font-family: "Nanum Gothic";
+  text-decoration: underline;
+  text-align: left;
+  font-size: 21px;
+  letter-spacing: 1;
+  line-height: px;
+}
+
+.u3 {
+  background-color: rgba(217, 217, 217, 0);
+  width: 948px;
+  height: 64px;
+  position: absolute;
+  left: 370px;
+  top: 157px;
+  border: 1.5px solid rgba(57, 100, 255, 1);
+}
+.button_upload {
+  background-image: url("images/upload.png");
+  background-size: 100% 100%;
+  position: absolute;
+  width: 143px;
+  height: 54px;
+  left: 374px;
+  top: 232px;
+}
+.u4 {
+  background-color: rgba(217, 217, 217, 0);
+  width: 797px;
+  height: 54px;
+  position: absolute;
+  left: 521px;
+  top: 229px;
+  border: 1.5px solid rgba(57, 100, 255, 1);
+}
+.u5 {
+  background-color: rgba(217, 217, 217, 0);
+  width: 948px;
+  height: 402px;
+  position: absolute;
+  left: 374px;
+  top: 291px;
+  border: 1.5px solid rgba(57, 100, 255, 1);
+}
+
+.upload {
+  background-color: white;
+  width: 151px;
+  height: 58px;
+  position: absolute;
+  left: 374px;
+  top: 779px;
+  border-radius: 50px;
+  border: 2px solid rgba(57, 100, 255, 1);
+  color: rgba(57, 100, 255, 1);
+  font-family: "Nanum Gothic";
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 50px;
+}
+.upload:active {
+  background-color: rgba(57, 100, 255, 1);
+  width: 151px;
+  height: 58px;
+  position: absolute;
+  left: 374px;
+  top: 779px;
+  border-radius: 50px;
+  border: 2px solid rgba(57, 100, 255, 1);
+  color: white;
+  font-family: "Nanum Gothic";
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 50px;
+}

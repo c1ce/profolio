@@ -1,0 +1,217 @@
+/*로그인*/
+.text_main {
+  position: absolute;
+  width: 725px;
+  height: 94px;
+  left: 393px;
+  top: 129px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 89px;
+  line-height: 107px;
+  text-align: center;
+  color: #000000;
+}
+
+.l1 {
+  position: absolute;
+  width: 194px;
+  height: 60px;
+  left: 548px;
+  top: 251px;
+
+  font-family: "Nanum Gothic";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+
+  color: #000000;
+}
+
+.l2 {
+  position: absolute;
+  width: 165px;
+  height: 60px;
+  left: 722px;
+  top: 233px;
+  background: none;
+  border: none;
+  font-family: "Nanum Gothic";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+
+  color: rgba(57, 101, 255, 0.92);
+}
+
+.userid {
+  position: absolute;
+  width: 420px;
+  height: 41.13px;
+  left: 188px;
+  top: 515px;
+
+}
+.userid2 {
+  position: absolute;
+  width: 420px;
+  height: 41.13px;
+  left: 188px;
+  top: 405px;
+
+}
+.email {
+  background: none;
+  border: none;
+  width: 420px;
+  height: 41.13px;
+  background: none;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.3);
+}
+
+.userpw {
+  position: absolute;
+  width: 420px;
+  height: 40px;
+  left: 188px;
+  top: 607px;
+
+  background: none;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.3);
+}
+.textbox{
+  background: none;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.3);
+}
+.password {
+  background: none;
+  border: none;
+  width: 420px;
+  height: 41.13px;
+}
+
+.btn_login {
+  background-color: white;
+  width: 139px;
+  height: 56px;
+  position: absolute;
+  left: 188px;
+  top: 756px;
+  border-radius: 50px;
+  border: 2px solid rgba(57, 100, 255, 1);
+  color: rgba(57, 100, 255, 1);
+  font-family: "Nanum Gothic";
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 50px;
+}
+.btn_login:active {
+  background-color: rgba(57, 100, 255, 1);
+  width: 139px;
+  height: 56px;
+  position: absolute;
+  left: 188px;
+  top: 756px;
+  border-radius: 50px;
+  border: 2px solid rgba(57, 100, 255, 1);
+  color: white;
+  font-family: "Nanum Gothic";
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 50px;
+}
+.line {
+  position: absolute;
+  width: 75px;
+  height: 571px;
+  left: 689px;
+  top: 339px;
+  background-image: url("../img/line_create.png");
+}
+.btn{
+  border: none;
+  background: rgba(57, 101, 255, 0.8);
+
+  font-family: "Nanum Gothic";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 21px;
+  /* identical to box height */
+
+  text-align: center;
+
+  color: #ffffff;
+}
+.btn_company {
+  position: absolute;
+  width: 401px;
+  height: 63px;
+  left: 880px;
+  top: 568px;
+  border: none;
+  background: rgba(57, 101, 255, 0.8);
+
+  font-family: "Nanum Gothic";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 21px;
+  /* identical to box height */
+
+  text-align: center;
+
+  color: #ffffff;
+}
+/*개인회원가입*/
+
+.j1 {
+  position: absolute;
+  width: 294px;
+  height: 64px;
+  left: 476px;
+  top: 251px;
+
+  font-family: "Nanum Gothic";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+
+  color: #000000;
+}
+
+.j2 {
+  position: absolute;
+  width: 200px;
+  height: 60px;
+  left: 759px;
+  top: 233px;
+  background: none;
+  border: none;
+  font-family: "Nanum Gothic";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+
+  color: rgba(57, 101, 255, 0.92);
+}
+
+#j3 {
+  position: absolute;
+  top: 560px ;
+}
+#j4 {
+  position: absolute;
+  top: 660px ;
+}
