@@ -48,9 +48,7 @@ public class MemberController {
     }
 
     @GetMapping(value = "/login")
-    public String loginMember(){
-        return "/member/memberLoginForm";
-    }
+    public String loginMember(){ return "/member/memberLoginForm"; }
 
     @GetMapping(value = "/login/error")
     public String loginError(Model model){

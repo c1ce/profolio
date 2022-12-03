@@ -18,27 +18,25 @@
 </head>
 <body>
 <div class="back">
-  <header class="text_main">Profolio 로그인</header>
+  <header class="text_main">기업 로그인</header>
   <span class="l1">계정이 없으신가요?</span>
-  <form role="form" action="/members/new">
-    <input class="l2" type="submit" value="새 계정 만들기>" />
+  <form role="form" action="/company/new">
+    <input class="l2" type="submit" value="기업 계정 만들기>" />
   </form>
-  <form role="form" method="post" action="/members/login">
+  <form role="form" method="post" action="/company/login">
     <div class="userid">
-      <input class="email" name="email" type="email" placeholder="이메일" />
+      <input class="email" name="email" type="email" placeholder="기업이메일" />
     </div>
     <div class="userpw">
       <input class="password" name="password" id="password" type="password" placeholder="비밀번호" />
-      <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
     </div>
-
-
-    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+    <p th:if="${loginErrorMsg}" class="error" th:text="${loginErrorMsg}"></p>
       <input class="btn_login" type="submit" value="로그인" />
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
     </form>
     <div class="line"></div>
-  <form action="/company/login">
-    <input class="btn_company" type="submit" value="기업회원 로그인" />
+  <form action="/members/login">
+    <input class="btn_company" type="submit" value="일반회원 로그인" />
   </form>
 </div>
 </body>

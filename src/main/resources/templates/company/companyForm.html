@@ -33,12 +33,12 @@
 </head>
 <body>
 <div class="back">
-    <header class="text_main">Profolio 가입하기</header>
-    <span class="j1">기업회원으로 가입하시겠습니까?</span>
-    <form action="/company/new">
-        <input class="j2" type="submit" value="기업회원 가입하기>" />
+    <header class="text_main">기업계정 가입하기</header>
+    <span class="j1">일반회원으로 가입하시겠습니까?</span>
+    <form action="/members/new">
+        <input class="j2" type="submit" value="일반회원 가입하기>" />
     </form>
-    <form action="/members/new" role="form" method="post" th:object="${memberFormDto}">
+    <form action="/company/new" role="form" method="post" th:object="${companyFormDto}">
     <div class="userid2">
         <input class="email textbox" th:field="*{email}" type="email" placeholder="이메일" />
         <span><input type="button" class="btn" value="이메일 중복 확인" />
@@ -51,26 +51,26 @@
             </span>
         <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="fieldError">Incorrect data</p>
 
-        <input class="email textbox" th:field="*{name}" type="text" placeholder="이름" />
+        <input class="email textbox" th:field="*{name}" type="text" placeholder="회사명" />
         <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="fieldError">Incorrect data</p>
 
-        <input class="email textbox" th:field="*{age}" type="text" placeholder="나이" />
-        <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="fieldError">Incorrect data</p>
+        <input class="email textbox" th:field="*{represent}" type="text" placeholder="대표명" />
+        <p th:if="${#fields.hasErrors('represent')}" th:errors="*{represent}" class="fieldError">Incorrect data</p>
 
-        <input class="email textbox" th:field="*{address}" type="text" placeholder="사는곳" />
+        <input class="email textbox" th:field="*{companyNumber}" type="text" placeholder="사업자번호       *숫자만입력" />
+        <p th:if="${#fields.hasErrors('companyNumber')}" th:errors="*{companyNumber}" class="fieldError">Incorrect data</p>
+
+        <input class="email textbox" th:field="*{companyFoundingDate}" type="date" placeholder="사업자등록일" />
+        <p th:if="${#fields.hasErrors('companyFoundingDate')}" th:errors="*{companyFoundingDate}" class="fieldError">Incorrect data</p>
+
+        <input class="email textbox" th:field="*{address}" type="text" placeholder="회사주소" />
         <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="fieldError">Incorrect data</p>
-
-        <select class="email textbox" th:field="*{tech}"name="tech">
-            <option value="">분야선택</option>
-            <option value="IT">IT</option>
-            <option value="Design">Design</option>
-            <option value="기획">기획</option>
-            <option value="경영">경영</option>
-        </select>
-        <p th:if="${#fields.hasErrors('tech')}" th:errors="*{tech}" class="fieldError">Incorrect data</p>
 
         <input class="email textbox" th:field="*{phoneNumber}"type="text" placeholder="전화번호       *숫자만입력" /><!-- 검증 꼭필요 -->
         <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="fieldError">Incorrect data</p>
+
+        <input class="email textbox" th:field="*{manager}"type="text" placeholder="인사담당자명" /><!-- 검증 꼭필요 -->
+        <p th:if="${#fields.hasErrors('manager')}" th:errors="*{manager}" class="fieldError">Incorrect data</p>
 
     </div>
     <div class="line"></div>
