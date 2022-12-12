@@ -1,5 +1,7 @@
 package com.profolio.controller;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -22,14 +24,21 @@ public class MainController {
 
     @GetMapping(value = "/")
     public String main(){
-
-//        Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 6);
-//        Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable);
-//
-//        model.addAttribute("items", items);
-//        model.addAttribute("itemSearchDto", itemSearchDto);
-//        model.addAttribute("maxPage", 5);
-
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if(principal.toString()!="anonymousUser") {
+            UserDetails userDetails = (UserDetails) principal;
+            String username = userDetails.getUsername();
+            String auth = userDetails.getAuthorities().toString();
+            if (auth.equals("[ROLE_USER]")) {
+                return "redirect:/members";
+            }
+            if (auth.equals("[ROLE_ENTERPRISE]")) {
+                return "redirect:/company";
+            }
+            if (auth.equals("[ROLE_ADMIN]")) {
+                return "redirect:/admin/share";
+            }
+        }
         return "main";
     }
 

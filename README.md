@@ -9,7 +9,7 @@ Key Feature.
 3. 포트폴리오 탐색 기능
 4. 개인 사용자와 기업간의 contact 기능
 
-
+https://velog.io/@hyunheal/STOMP-client
 ---
 회원
 1. [ ] 1.회원가입 => 외부메일로 가입하는거

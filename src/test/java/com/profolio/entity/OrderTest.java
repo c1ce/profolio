@@ -42,10 +42,8 @@ class OrderTest {
     public Item createItem(){
         Item item = new Item();
         item.setItemNm("테스트 상품");
-        item.setPrice(10000);
         item.setItemDetail("상세설명");
         item.setItemSellStatus(ItemSellStatus.SELL);
-        item.setStockNumber(100);
         item.setRegTime(LocalDateTime.now());
 
         item.setUpdateTime(LocalDateTime.now());
@@ -63,8 +61,6 @@ class OrderTest {
             itemRepository.save(item);
             OrderItem orderItem = new OrderItem();
             orderItem.setItem(item);
-            orderItem.setCount(10);
-            orderItem.setOrderPrice(1000);
             orderItem.setOrder(order);
             order.getOrderItems().add(orderItem);
         }
@@ -84,8 +80,6 @@ class OrderTest {
             itemRepository.save(item);
             OrderItem orderItem = new OrderItem();
             orderItem.setItem(item);
-            orderItem.setCount(10);
-            orderItem.setOrderPrice(1000);
             orderItem.setOrder(order);
             order.getOrderItems().add(orderItem);
         }

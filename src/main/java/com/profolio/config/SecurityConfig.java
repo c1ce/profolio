@@ -40,7 +40,7 @@ public class SecurityConfig {
         http.exceptionHandling()
                 .authenticationEntryPoint(new CustomAuthenticationEntryPoint())
         ;
-
+        http.headers().frameOptions().sameOrigin();
         return http.build();
     }
 

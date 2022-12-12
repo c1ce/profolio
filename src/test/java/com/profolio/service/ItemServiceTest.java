@@ -39,11 +39,11 @@ class ItemServiceTest {
 
         List<MultipartFile> multipartFileList = new ArrayList<>();
 
-        for(int i=0;i<5;i++){
+        for(int i=0;i<1;i++){
             String path = "C:/shop/item/";
-            String imageName = "image" + i + ".jpg";
+            String imageName = "pdf" + i + ".pdf";
             MockMultipartFile multipartFile =
-                    new MockMultipartFile(path, imageName, "image/jpg", new byte[]{1,2,3,4});
+                    new MockMultipartFile(path, imageName, "multipart/form-data", new byte[]{1,2,3,4});
             multipartFileList.add(multipartFile);
         }
 
@@ -58,8 +58,6 @@ class ItemServiceTest {
         itemFormDto.setItemNm("테스트상품");
         itemFormDto.setItemSellStatus(ItemSellStatus.SELL);
         itemFormDto.setItemDetail("테스트 상품 입니다.");
-        itemFormDto.setPrice(1000);
-        itemFormDto.setStockNumber(100);
 
         List<MultipartFile> multipartFileList = createMultipartFiles();
         Long itemId = itemService.saveItem(itemFormDto, multipartFileList);
@@ -71,8 +69,6 @@ class ItemServiceTest {
         assertEquals(itemFormDto.getItemNm(), item.getItemNm());
         assertEquals(itemFormDto.getItemSellStatus(), item.getItemSellStatus());
         assertEquals(itemFormDto.getItemDetail(), item.getItemDetail());
-        assertEquals(itemFormDto.getPrice(), item.getPrice());
-        assertEquals(itemFormDto.getStockNumber(), item.getStockNumber());
         assertEquals(multipartFileList.get(0).getOriginalFilename(), itemImgList.get(0).getOriImgName());
     }
 

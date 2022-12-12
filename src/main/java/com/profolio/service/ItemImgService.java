@@ -1,5 +1,6 @@
 package com.profolio.service;
 
+import com.profolio.controller.PdfToJpgService;
 import com.profolio.entity.ItemImg;
 import com.profolio.repository.ItemImgRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ public class ItemImgService {
 
     private final FileService fileService;
 
+
     public void saveItemImg(ItemImg itemImg, MultipartFile itemImgFile) throws Exception{
         String oriImgName = itemImgFile.getOriginalFilename();
         String imgName = "";
@@ -31,16 +33,24 @@ public class ItemImgService {
         if(!StringUtils.isEmpty(oriImgName)){
             imgName = fileService.uploadFile(itemImgLocation, oriImgName,
                     itemImgFile.getBytes());
-            imgUrl = "/images/item/" + imgName;
+            imgUrl = itemImgLocation + imgName;
         }
 
         //상품 이미지 정보 저장
         itemImg.updateItemImg(oriImgName, imgName, imgUrl);
         itemImgRepository.save(itemImg);
+
+        PdfToJpgService pdfToJpgService = new PdfToJpgService();
+
+        pdfToJpgService.convertPdf(imgName,itemImgLocation);
+
+
     }
 
     public void updateItemImg(Long itemImgId, MultipartFile itemImgFile) throws Exception{
         if(!itemImgFile.isEmpty()){
+            PdfToJpgService pdfToJpgService = new PdfToJpgService();
+
             ItemImg savedItemImg = itemImgRepository.findById(itemImgId)
                     .orElseThrow(EntityNotFoundException::new);
 
@@ -48,12 +58,15 @@ public class ItemImgService {
             if(!StringUtils.isEmpty(savedItemImg.getImgName())) {
                 fileService.deleteFile(itemImgLocation+"/"+
                         savedItemImg.getImgName());
+
+                pdfToJpgService.deleteFile(itemImgLocation,savedItemImg.getImgName());
             }
 
             String oriImgName = itemImgFile.getOriginalFilename();
             String imgName = fileService.uploadFile(itemImgLocation, oriImgName, itemImgFile.getBytes());
-            String imgUrl = "/images/item/" + imgName;
+            String imgUrl = itemImgLocation + imgName;
             savedItemImg.updateItemImg(oriImgName, imgName, imgUrl);
+            pdfToJpgService.convertPdf(imgName,itemImgLocation);
         }
     }
 

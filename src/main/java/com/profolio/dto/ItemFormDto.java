@@ -19,14 +19,10 @@ public class ItemFormDto {
     @NotBlank(message = "상품명은 필수 입력 값입니다.")
     private String itemNm;
 
-    @NotNull(message = "가격은 필수 입력 값입니다.")
-    private Integer price;
 
     @NotBlank(message = "상품 상세는 필수 입력 값입니다.")
     private String itemDetail;
 
-    @NotNull(message = "재고는 필수 입력 값입니다.")
-    private Integer stockNumber;
 
     private ItemSellStatus itemSellStatus;
 
@@ -34,6 +30,7 @@ public class ItemFormDto {
 
     private List<Long> itemImgIds = new ArrayList<>();
 
+    private String createdBy;
     private static ModelMapper modelMapper = new ModelMapper();
 
     public Item createItem(){

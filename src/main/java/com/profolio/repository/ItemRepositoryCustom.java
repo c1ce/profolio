@@ -1,5 +1,6 @@
 package com.profolio.repository;
 
+import com.profolio.constant.ItemSellStatus;
 import com.profolio.dto.ItemSearchDto;
 import com.profolio.entity.Item;
 import org.springframework.data.domain.Page;
@@ -9,6 +10,9 @@ import com.profolio.dto.MainItemDto;
 public interface ItemRepositoryCustom {
 
     Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable);
+    Page<Item> getMyItemPage(ItemSearchDto itemSearchDto, Pageable pageable,String createdBy);
+
+    Page<Item> getShareItemPage(ItemSearchDto itemSearchDto, Pageable pageable);
 
     Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable);
 

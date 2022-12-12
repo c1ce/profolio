@@ -1,6 +1,8 @@
 package com.profolio.controller;
 
 import com.profolio.dto.MemberFormDto;
+import com.profolio.entity.Account;
+import com.profolio.service.AccountService;
 import com.profolio.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import javax.validation.Valid;
 
 @RequestMapping("/members")
@@ -21,6 +25,7 @@ import javax.validation.Valid;
 public class MemberController {
 
     private final MemberService memberService;
+    private final AccountService accountService;
     private final PasswordEncoder passwordEncoder;
 
     @GetMapping(value = "/new")
@@ -31,7 +36,6 @@ public class MemberController {
 
     @PostMapping(value = "/new")
     public String newMember(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model){
-
         if(bindingResult.hasErrors()){
             return "member/memberForm";
         }
@@ -39,6 +43,13 @@ public class MemberController {
         try {
             Member member = Member.createMember(memberFormDto, passwordEncoder);
             memberService.saveMember(member);
+            Account account = new Account();
+            account.setEmail(member.getEmail());
+            account.setPassword(member.getPassword());
+            account.setName(member.getName());
+            account.setRole(member.getRole());
+            accountService.saveAccount(account);
+
         } catch (IllegalStateException e){
             model.addAttribute("errorMessage", e.getMessage());
             return "member/memberForm";

@@ -48,7 +48,7 @@ public class Member extends BaseTimeEntity {
         member.setAge(memberFormDto.getAge());
         member.setTech(memberFormDto.getTech());
         member.setPhoneNumber(memberFormDto.getPhoneNumber());
-        member.setRole(Role.ADMIN);
+        member.setRole(Role.USER);
         return member;
     }
 

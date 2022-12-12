@@ -11,7 +11,7 @@
   position: absolute;
   left: 1349px;
   top: 42px;
-  background-image: url("../images/close_button.png");
+  background-image: url("images/close_button.png");
   background-color: white;
   background-repeat: no-repeat;
   background-size: cover;
@@ -43,7 +43,7 @@
   font-family: "Nanum Gothic";
   text-align: left;
   font-size: 21px;
-  letter-spacing: 1;
+  letter-spacing: 1px;
 }
 .sp {
   color: rgba(0, 0, 0, 1);
@@ -179,4 +179,17 @@
   font-size: 18px;
   letter-spacing: 0;
   line-height: 50px;
+}
+
+.namess {
+  color: rgba(0, 0, 0, 1);
+  width: 212px;
+  height: 49px;
+  position: absolute;
+  left: 25px;
+  top: 125px;
+  font-family: "Nanum Gothic";
+  text-align: left;
+  font-size: 21px;
+  letter-spacing: 1px;
 }

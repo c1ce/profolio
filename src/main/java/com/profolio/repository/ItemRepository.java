@@ -1,6 +1,9 @@
 package com.profolio.repository;
 
+import com.profolio.dto.ItemSearchDto;
 import com.profolio.entity.Item;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -17,16 +20,12 @@ public interface ItemRepository extends JpaRepository<Item, Long>,
 
     List<Item> findByItemNmOrItemDetail(String itemNm, String itemDetail);
 
-    List<Item> findByPriceLessThan(Integer price);
-
-    List<Item> findByPriceLessThanOrderByPriceDesc(Integer price);
-
     @Query("select i from Item i where i.itemDetail like " +
-            "%:itemDetail% order by i.price desc")
+            "%:itemDetail% order by i.updateTime desc")
     List<Item> findByItemDetail(@Param("itemDetail") String itemDetail);
 
     @Query(value="select * from item i where i.item_detail like " +
-            "%:itemDetail% order by i.price desc", nativeQuery = true)
+            "%:itemDetail% order by i.updateTime desc", nativeQuery = true)
     List<Item> findByItemDetailByNative(@Param("itemDetail") String itemDetail);
 
 }

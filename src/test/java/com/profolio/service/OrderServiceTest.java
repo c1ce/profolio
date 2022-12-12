@@ -42,10 +42,8 @@ class OrderServiceTest {
     public Item saveItem(){
         Item item = new Item();
         item.setItemNm("테스트 상품");
-        item.setPrice(10000);
         item.setItemDetail("테스트 상품 상세 설명");
         item.setItemSellStatus(ItemSellStatus.SELL);
-        item.setStockNumber(100);
         return itemRepository.save(item);
     }
 
@@ -63,7 +61,6 @@ class OrderServiceTest {
         Member member = saveMember();
 
         OrderDto orderDto = new OrderDto();
-        orderDto.setCount(10);
         orderDto.setItemId(item.getId());
 
         Long orderId = orderService.order(orderDto, member.getEmail());
@@ -71,10 +68,6 @@ class OrderServiceTest {
                 .orElseThrow(EntityNotFoundException::new);
 
         List<OrderItem> orderItems = order.getOrderItems();
-
-        int totalPrice = orderDto.getCount()*item.getPrice();
-
-        assertEquals(totalPrice, order.getTotalPrice());
     }
 
     @Test
@@ -84,7 +77,6 @@ class OrderServiceTest {
         Member member = saveMember();
 
         OrderDto orderDto = new OrderDto();
-        orderDto.setCount(10);
         orderDto.setItemId(item.getId());
         Long orderId = orderService.order(orderDto, member.getEmail());
 
@@ -93,7 +85,6 @@ class OrderServiceTest {
         orderService.cancelOrder(orderId);
 
         assertEquals(OrderStatus.CANCEL, order.getOrderStatus());
-        assertEquals(100, item.getStockNumber());
     }
 
 }

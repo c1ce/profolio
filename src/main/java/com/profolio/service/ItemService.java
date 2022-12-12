@@ -1,10 +1,12 @@
 package com.profolio.service;
 
+import com.profolio.controller.PdfToJpgService;
 import com.profolio.dto.ItemFormDto;
 import com.profolio.entity.Item;
 import com.profolio.entity.ItemImg;
 import com.profolio.repository.ItemImgRepository;
 import com.profolio.repository.ItemRepository;
+import com.profolio.repository.ScrapRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,7 @@ import java.util.List;
 import com.profolio.dto.ItemImgDto;
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import com.profolio.dto.ItemSearchDto;
 import org.springframework.data.domain.Page;
@@ -32,6 +35,8 @@ public class ItemService {
     private final ItemImgService itemImgService;
 
     private final ItemImgRepository itemImgRepository;
+
+    private final ScrapRepository scrapRepository;
 
     public Long saveItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception{
 
@@ -51,6 +56,7 @@ public class ItemService {
 
             itemImgService.saveItemImg(itemImg, itemImgFileList.get(i));
         }
+
 
         return item.getId();
     }
@@ -91,10 +97,40 @@ public class ItemService {
     public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
         return itemRepository.getAdminItemPage(itemSearchDto, pageable);
     }
+    @Transactional(readOnly = true)
+    public Page<Item> getShareItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
+        return itemRepository.getShareItemPage(itemSearchDto, pageable);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<Item> getMyItemPage(ItemSearchDto itemSearchDto, Pageable pageable,String createdBy){
+        return itemRepository.getMyItemPage(itemSearchDto, pageable,createdBy);
+    }
 
     @Transactional(readOnly = true)
     public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
         return itemRepository.getMainItemPage(itemSearchDto, pageable);
     }
 
+
+    public String findByURL(Long id) {
+        return itemImgRepository.findFirstByItemId(id).getImgUrl();
+    }
+
+    public void deleteItem(List<Long> deleteList) {
+        for (Long number :
+                deleteList) {
+            scrapRepository.deleteByItemId(number);
+            itemImgRepository.deleteByItemId(number);
+            itemRepository.deleteById(number);
+        }
+    }
+
+    public void deleteScrap(List<Long> deleteList) {
+        for (Long id:
+                deleteList) {
+            scrapRepository.deleteById(id);
+        }
+
+    }
 }

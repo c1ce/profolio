@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      id="example1" style="height:100%;width:100%;position: absolute">
+<head>
+<meta charset="UTF-8">
+<title>pdf 뷰어</title>
+</head>
+<body>
+<script type="text/javascript" th:src="@{/js/pdfobject.js}"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+    const url = /*[[${url}]]*/;
+
+    PDFObject.embed(url, "#example1");
+
+    /*]]>*/
+</script>
+</body>
+</html>

@@ -3,41 +3,74 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <div th:fragment="header">
-    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="/">Shop</a>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
 
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                    <a class="nav-link" href="/admin/item/new">상품 등록</a>
-                </li>
-                <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
-                    <a class="nav-link" href="/admin/items">상품 관리</a>
-                </li>
-                <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <a class="nav-link" href="/cart">장바구니</a>
-                </li>
-                <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <a class="nav-link" href="/orders">구매이력</a>
-                </li>
-                <li class="nav-item" sec:authorize="isAnonymous()">
-                    <a class="nav-link" href="/members/login">로그인</a>
-                </li>
-                <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <a class="nav-link" href="/members/logout">로그아웃</a>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0" th:action="@{/}" method="get">
-                <input name="searchQuery" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
+
+        $(document).ready(function(){
+            connect();
+
+        });
+
+        function connect() {
+            const name = /*[[${#authentication.name}]]*/;
+            let socket = new SockJS("/ws-connection");
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, function (frame) {
+                console.log('Connected: ' + frame);
+                stompClient.subscribe('/subscribe/rooms/'+name, function (e) {
+                    console.log('구독 중', e.body);
+                    $("#contactMessage").append(" !");
+                    setInterval(function(){
+                        $("#contactMessage").toggle();
+                    }, 250);
+                });
+            });
+        }
+        /*]]>*/
+    </script>
+    <link href="/css/header.css" rel="stylesheet" />
+    <form>
+<!--    <div class="back">-->
+        <form class="form-inline my-2 my-lg-0" th:action="@{/}" method="get">
+            <div class="namess">
+            <a th:text="${#authentication.name}" style="color: dodgerblue"href="/members/myPage"></a>
+                님
+                <a id="contactMessage" sec:authorize="hasAnyAuthority('ROLE_USER')" style="color: orangered;"href="/members/contact/list">Contact</a>
+            </div>
+            <input name="searchQuery" class="search" type="search" placeholder="Search" aria-label="Search">
+
+<!--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>-->
+        </form>
+        <a class="mpd" sec:authorize="hasAnyAuthority('ROLE_USER')" href="/members/portfolios">> My portfolio drive</a>
+        <a class="sp" sec:authorize="hasAnyAuthority('ROLE_USER')" href="/members/portfolios/share">> 공유 포트폴리오</a>
+        <a class="lp" sec:authorize="hasAnyAuthority('ROLE_USER')" href="/members/scrap">> 관심 포트폴리오</a>
+<!--        <a class="mp" sec:authorize="hasAnyAuthority('ROLE_USER')" href="/members/myPage">> 마이페이지</a>-->
+        <a class="help" sec:authorize="hasAnyAuthority('ROLE_USER')" href="/members/help">> 도움말</a>
+        <a class="logout" sec:authorize="hasAnyAuthority('ROLE_USER')" href="/members/logout">로그아웃</a>
+
+<!--        <a class="mpd" sec:authorize="hasAnyAuthority('ROLE_ADMIN')" href="/company/portfolio">> My portfolio drive</a>-->
+        <a class="mpd" sec:authorize="hasAnyAuthority('ROLE_ENTERPRISE')" href="/company/contact">> Contact List </a>
+        <a class="sp" sec:authorize="hasAnyAuthority('ROLE_ENTERPRISE')" href="/company/portfolios/share">> 공유 포트폴리오</a>
+        <a class="lp" sec:authorize="hasAnyAuthority('ROLE_ENTERPRISE')" href="/company/scrap">> 관심 포트폴리오</a>
+<!--        <a class="mp" sec:authorize="hasAnyAuthority('ROLE_ENTERPRISE')" href="/company/myPage">> 마이페이지</a>-->
+        <a class="help" sec:authorize="hasAnyAuthority('ROLE_ENTERPRISE')" href="/company/help">> 도움말</a>
+        <a class="logout" sec:authorize="hasAnyAuthority('ROLE_ENTERPRISE')" href="/members/logout">로그아웃</a>
+<!--    </div>-->
+
+        <a class="lp" sec:authorize="hasAnyAuthority('ROLE_ADMIN')" href="/admin/share">> 공유 포트폴리오</a>
+        <a class="help" sec:authorize="hasAnyAuthority('ROLE_ADMIN')" href="/company/help">> 도움말</a>
+        <a class="logout" sec:authorize="hasAnyAuthority('ROLE_ADMIN')" href="/members/logout">로그아웃</a>
+    </form>
+<!--                <li class="nav-item" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">-->
+<!--                <li class="nav-item" sec:authorize="isAnonymous()">-->
+<!--                    <a class="nav-link" href="/members/login">로그인</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--                    <a class="nav-link" href="/members/logout">로그아웃</a>-->
+<!--                </li>-->
+
 </div>
+
 
 </html>

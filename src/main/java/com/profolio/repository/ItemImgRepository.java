@@ -10,4 +10,7 @@ public interface ItemImgRepository extends JpaRepository<ItemImg, Long> {
 
     ItemImg findByItemIdAndRepimgYn(Long itemId, String repimgYn);
 
+    ItemImg findFirstByItemId(Long id);
+
+    void deleteByItemId(Long number);
 }

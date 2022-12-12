@@ -49,7 +49,7 @@ public class Company extends BaseTimeEntity {
         String password = passwordEncoder.encode(companyFormDto.getPassword());
         company.setPassword(password);
         company.setPhoneNumber(companyFormDto.getPhoneNumber());
-        company.setRole(Role.ADMIN);
+        company.setRole(Role.ENTERPRISE);
         company.setManager(companyFormDto.getManager());
         company.setRepresent(companyFormDto.getRepresent());
         company.setCompanyNumber(companyFormDto.getCompanyNumber());

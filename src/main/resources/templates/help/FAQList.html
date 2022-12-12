@@ -1,0 +1,124 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <th:block layout:fragment="css">
+        <style>
+        .qna label::before { /* 제목 앞 화살표 */
+            content: "▶";
+            display: block;
+            color: #a00;
+            margin-right: 8px;
+            float: left;
+        }
+        .qna input:checked + label::before { /* 내용 펼침 상태 제목 앞 화살표 */
+            content: "▼";
+        }
+        .layout{
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .qna{
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .qna > li{
+            padding: 10px 0;
+            box-sizing: border-box;
+        }
+        .qna > li:nth-child(n+2){ /* 아이템 구분 점선 */
+            border-top: 1px dashed #aaa;
+        }
+        .qna input {
+            display: none;
+        }
+
+        .qna label { /* 제목 - 클릭 영역 */
+            font-weight: bold;
+            color: #000;
+            margin: 20px 0 0;
+            cursor: pointer;
+        }
+        .qna label::before { /* 제목 앞 화살표 */
+            display: block;
+            content: "";
+            width: 0;
+            height: 0;
+            border: 8px solid transparent;
+            border-left: 8px solid #a00;
+            margin: 2px 0 0 8px;
+            float: left;
+        }
+        .qna input:checked + label::before { /* 내용 펼침 상태 제목 앞 화살표 */
+            border: 8px solid transparent;
+            border-top: 8px solid #a00;
+            border-bottom: 0;
+            margin: 8px 4px 0;
+        }
+
+        .qna div { /* 내용 영역 - 기본 감춤 상태 */
+            display: none;
+            color: #666;
+            font-size: 0.9375em;
+            overflow: hidden;
+            padding: 10px 0 10px 30px;
+            box-sizing: border-box;
+            transition: max-height 0.4s;
+        }
+        .qna input:checked + label + div { /* 내용 영역 펼침 */
+            display: block;
+        }
+        </style>
+    </th:block>
+</head>
+<body>
+    <div layout:fragment="content">
+        <h3>FAQ</h3>
+    <ul class="qna">
+        <li>
+            <input type="checkbox" id="qna-1">
+            <label for="qna-1">Help 페이지입니다</label>
+            <div>
+                <p>Help 페이지입니다</p>
+            </div>
+        </li>
+        <li>
+            <input type="checkbox" id="qna-2">
+            <label for="qna-2">Help 페이지입니다</label>
+            <div>
+                <p>Help 페이지입니다</p>
+            </div>
+        </li>
+        <li>
+            <input type="checkbox" id="qna-3">
+            <label for="qna-3">Help 페이지입니다</label>
+            <div>
+                <p>Help 페이지입니다</p>
+            </div>
+        </li>
+        <li>
+            <input type="checkbox" id="qna-4">
+            <label for="qna-4">Help 페이지입니다</label>
+            <div>
+                <p>Help 페이지입니다</p>
+            </div>
+        </li>
+        <li>
+            <input type="checkbox" id="qna-5">
+            <label for="qna-5">Help 페이지입니다</label>
+            <div>
+                <p>Help 페이지입니다</p>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

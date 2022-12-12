@@ -1,7 +1,9 @@
 package com.profolio.controller;
 
 import com.profolio.dto.CompanyFormDto;
+import com.profolio.entity.Account;
 import com.profolio.entity.Company;
+import com.profolio.service.AccountService;
 import com.profolio.service.CompanyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,12 +22,13 @@ import javax.validation.Valid;
 public class CompanyController {
 
     private final CompanyService companyService;
+    private final AccountService accountService;
     private final PasswordEncoder passwordEncoder;
 
     @GetMapping(value = "/new")
     public String companyForm(Model model){
         model.addAttribute("companyFormDto", new CompanyFormDto());
-        return "company/companyForm";
+        return "contactList";
     }
 
     @PostMapping(value = "/new")
@@ -39,6 +42,12 @@ public class CompanyController {
         try {
             Company company = Company.createCompany(companyFormDto, passwordEncoder);
             companyService.saveCompany(company);
+            Account account = new Account();
+            account.setEmail(company.getEmail());
+            account.setPassword(company.getPassword());
+            account.setName(company.getName());
+            account.setRole(company.getRole());
+            accountService.saveAccount(account);
         } catch (IllegalStateException e){
             model.addAttribute("errorMessage", e.getMessage());
             return "company/companyForm";
@@ -47,15 +56,16 @@ public class CompanyController {
         return "redirect:/";
     }
 
+    //Member쪽에서 Account객체로 로그인
     @GetMapping(value = "/login")
-    public String loginCompany(){return "/company/companyLoginForm";
+    public String loginCompany(){return "/member/memberLoginForm";
     }
 
 
     @GetMapping(value = "/login/error")
     public String loginError(Model model){
         model.addAttribute("loginErrorMsg", "아이디 또는 비밀번호를 확인해주세요");
-        return "/company/companyLoginForm";
+        return "/member/memberLoginForm";
     }
 
 }

@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class CompanyService implements UserDetailsService {
+public class CompanyService{
 
     private final CompanyRepository companyRepository;
 
@@ -29,20 +29,6 @@ public class CompanyService implements UserDetailsService {
         }
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        Company company = companyRepository.findByEmail(email);
-
-        if(company == null){
-            throw new UsernameNotFoundException(email);
-        }
-
-        return User.builder()
-                .username(company.getEmail())
-                .password(company.getPassword())
-                .roles(company.getRole().toString())
-                .build();
-    }
 
 }
