@@ -96,7 +96,7 @@
                 </td>
                 <td th:text="${item.createdBy}"></td>
                 <!--                <td th:text="${item.createdBy}"></td>-->
-                <td th:if="${#strings.length(item.itemDetail)>=20}" th:text="${#strings.substring(item.itemDetail,0,19)}"></td>
+                <td th:if="${#strings.length(item.itemDetail)>=20}" th:text="${#strings.substring(item.itemDetail,0,19)}+'...'"></td>
                 <td th:if="${#strings.length(item.itemDetail)<20}" th:text="${item.itemDetail}"></td>
 
                 <td th:text="${#strings.substring(#strings.replace(item.regTime,'T',' '),0,19)}"></td>
@@ -150,7 +150,7 @@
 
         </div>
     </form>
-    <button th:onclick="getCheckboxValue()">삭제</button>
+    <button class="btn btn-outline-primary" th:onclick="getCheckboxValue()">삭제</button>
 </div>
 
 </html>

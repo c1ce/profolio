@@ -87,7 +87,7 @@
                 <td th:if="${item.conatctStatus.toString().equals('READ')}">읽음</td>
                 <td th:unless="${item.conatctStatus.toString().equals('READ')}">안읽음</td>
                 <!--                <td th:text="${item.createdBy}"></td>-->
-                <td th:if="${#strings.length(item.Text)>=10}" th:text="${#strings.substring(item.Text,0,9)}"></td>
+                <td th:if="${#strings.length(item.Text)>=10}" th:text="${#strings.substring(item.Text,0,9)}+'...'"></td>
                 <td th:if="${#strings.length(item.Text)<10}" th:text="${item.Text}"></td>
 
                 <td th:text="${#strings.substring(#strings.replace(item.regTime,'T',' '),0,19)}"></td>
@@ -119,7 +119,7 @@
             </ul>
 
         </div>
-        <button th:onclick="getCheckboxValue()">삭제</button>
+        <button class="btn btn-outline-primary" th:onclick="getCheckboxValue()">삭제</button>
         </div>
     </form>
     <div>
